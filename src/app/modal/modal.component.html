@@ -1,0 +1,8 @@
+
+<div class="ng-modal-container" (click)="dismiss()" *ngIf="isOpen" [@appear]="'in'">
+    <div class="content-wrap">
+        <div class="main-container" (click)="stopBubble($event)">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

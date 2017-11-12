@@ -1,0 +1,14 @@
+<div class="app-container">
+    <ng-button (click)="showModal()">打开模板demo</ng-button>
+    <ng-modal [(isOpen)]="isOpen">
+        <h2>模态框</h2>
+        <p class="desc">模态框是很常用的组件，小到用于做简单的alert弹窗，大于用于渲染一个完整的组件，甚至实现复杂的表单等操作。它是一层在页面上的页面</p>
+    </ng-modal>
+    <br>
+    <br>
+    <br>
+    <ng-button (click)="showModal2()">打开组件demo</ng-button>
+    <ng-modal [(isOpen)]="isOpen2">
+        <app-test></app-test>
+    </ng-modal>
+</div>

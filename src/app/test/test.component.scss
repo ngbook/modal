@@ -1,0 +1,34 @@
+
+.test-wrap {
+    padding: 20px;
+    width: 800px;
+    overflow: auto;
+    display: flex;
+    flex-basis: auto;
+    .col {
+        float: left;
+    }
+    .poem-wrap {
+        text-align: left;
+        margin-right: 10px;
+        width: 380px;
+        h2 {
+            margin: 0 0 20px;
+        }
+        strong {
+            font-size: 14px;
+            margin: 20px 0;
+            color: #888;
+        }
+        p.text {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+    }
+    .img-wrap {
+        // width: 400px;
+        img {
+            width: 100%;
+        }
+    }
+}

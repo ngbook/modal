@@ -1,0 +1,35 @@
+
+$fontColor: #292b2c;
+$footerHeight: 50px;
+$btnHeight: 30px;
+
+.ng-modal-container {
+    position: fixed;
+    z-index: 1100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    outline: 0;
+    color: $fontColor;
+    background: rgba(48, 48, 48, 0.8);
+    text-align: center;
+    transition: opacity .5s;
+    .content-wrap { // 用于定位到中间
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        max-height: 90%;
+        overflow: auto;
+        .main-container { //  用于做背景
+            background: #fff;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 4px;
+            box-shadow: -6px 6px 10px #444;
+        }
+    }
+}

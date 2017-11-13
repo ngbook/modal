@@ -13,11 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { NgModalComponent } from './modal.component';
-import {
-    TplHeaderComponent,
-    TplBodyComponent,
-    TplFooterComponent
-} from './tpl-content';
 
 @NgModule({
     imports: [
@@ -27,20 +22,11 @@ import {
         PortalModule,
         BrowserAnimationsModule,
     ],
-    entryComponents: [
-        TplHeaderComponent,
-        TplBodyComponent,
-        TplFooterComponent,
-    ],
     exports: [
         NgModalComponent,
-        TplBodyComponent,
     ],
     declarations: [
         NgModalComponent,
-        TplHeaderComponent,
-        TplBodyComponent,
-        TplFooterComponent,
     ],
 })
 export class ModalModule {

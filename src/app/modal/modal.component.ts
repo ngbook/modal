@@ -1,25 +1,10 @@
-import { Component, OnInit, Input, Injector,
-    ComponentFactoryResolver, ContentChild,
-    ViewContainerRef, ViewChild, Output, EventEmitter
+import { Component, OnInit, Input,
+    Output, EventEmitter
 } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-import { Portal, ComponentPortal } from '@angular/cdk/portal';
 import {
     trigger, state, style,
     animate, transition, keyframes
 } from '@angular/animations';
-
-import {
-    TplHeaderComponent,
-    TplBodyComponent,
-    TplFooterComponent
-} from './tpl-content';
-
-// import { Router } from '@angular/router';
-// import { PopupService } from './modal.service';
-// import  { DomUtil }  from '../util/dom-handler.service';
-// import { ModalModel } from './modal.model';
 
 @Component({
     selector: 'ng-modal',
@@ -41,21 +26,13 @@ import {
             transition(':leave', [
                 animate('400ms ease-in', keyframes([
                     style({opacity: 1, transform: 'translateY(0) scale(1)', offset: 0}),
-                    style({opacity: 0.5, transform: 'translateY(-10%) scale(1.2)', offset: 0.6}),
-                    style({opacity: 0, transform: 'translateY(70%) scale(0.2)', offset: 1.0})
+                    style({opacity: 0, transform: 'scale(1.4)', offset: 1.0})
                 ]))
             ]),
         ]),
     ]
 })
 export class NgModalComponent implements OnInit {
-    // @ViewChild(CdkPortal)
-    // public cdkPortal: CdkPortal;
-    @Input()
-    content: Portal<any>;
-    @ContentChild(TplBodyComponent)
-    public bodyTpl: TplBodyComponent;
-
     @Input()
     public isOpen = true;
     @Output()
@@ -64,12 +41,6 @@ export class NgModalComponent implements OnInit {
     constructor() { }
 
     public ngOnInit() {
-        if (this.bodyTpl) {
-            this.content = new ComponentPortal(TplBodyComponent);
-            // console.log(this.content);
-        }
-        // console.log(this.cdkPortal);
-        // this.cdkPortal.attach();
     }
     public dismiss() {
         this.hide();

@@ -5,6 +5,7 @@ import { NgButtonModule } from 'ngbook-kits';
 import { AppComponent } from './app.component';
 import { ModalModule } from './modal';
 import { TestComponent } from './test/test.component';
+import { DialogModule } from './dialog';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { TestComponent } from './test/test.component';
         BrowserModule,
         ModalModule,
         NgButtonModule,
+        DialogModule.forRoot(),
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -18,13 +18,13 @@ import {
             })),
             transition(':enter', [
                 animate('400ms ease-in', keyframes([
-                    style({opacity: 0, transform: 'translateY(70%) scale(0.2)', offset: 0}),
-                    style({opacity: 0.5, transform: 'translateY(-10%) scale(1.2)', offset: 0.3}),
+                    style({opacity: 0, transform: 'translateY(-70%) scale(0.2)', offset: 0}),
+                    style({opacity: 0.5, transform: 'translateY(10%) scale(1.2)', offset: 0.3}),
                     style({opacity: 1, transform: 'translateY(0) scale(1)', offset: 1.0})
                 ]))
             ]),
             transition(':leave', [
-                animate('400ms ease-in', keyframes([
+                animate('200ms ease-in', keyframes([
                     style({opacity: 1, transform: 'translateY(0) scale(1)', offset: 0}),
                     style({opacity: 0, transform: 'scale(1.4)', offset: 1.0})
                 ]))
@@ -34,22 +34,38 @@ import {
 })
 export class NgModalComponent implements OnInit {
     @Input()
-    public isOpen = true;
+    public set isOpen(open: boolean) {
+        if (this._isOpen === open) {
+            return;
+        }
+        this._isOpen = open;
+    }
+    public get isOpen() {
+        return this._isOpen;
+    }
     @Output()
     public isOpenChange = new EventEmitter<boolean>();
+    private _isOpen = false;
+
+    @Input()
+    public overlayClosable = true;
+    @Input()
+    public boxStyle: any;
 
     constructor() { }
 
     public ngOnInit() {
     }
     public dismiss() {
-        this.hide();
+        this.isOpen = false;
+        this.isOpenChange.emit(false);
+    }
+    public overlayClicked() {
+        if (this.overlayClosable) {
+            this.dismiss();
+        }
     }
     public stopBubble(event) {
         event.stopPropagation();
-    }
-    private hide() {
-        this.isOpen = false;
-        this.isOpenChange.emit(false);
     }
 }

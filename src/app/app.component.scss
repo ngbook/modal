@@ -1,6 +1,9 @@
 .app-container {
     padding: 30px;
-    p.desc {
-        max-width: 500px;
+    .content-wrap {
+        padding: 10px;
+        p.desc {
+            max-width: 500px;
+        }
     }
 }

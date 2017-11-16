@@ -1,9 +1,6 @@
 
 import {
     NgModule,
-    Injector,
-    ApplicationRef,
-    ComponentFactoryResolver
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -30,12 +27,4 @@ import { NgModalComponent } from './modal.component';
     ],
 })
 export class ModalModule {
-    public static forRoot() {
-        return {
-            ngModule: ModalModule,
-            // providers: [ PopupService ]
-        };
-    }
-
 }
-

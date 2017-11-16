@@ -125,6 +125,7 @@
             true,
             "element",
             "app",
+            "ng",
             "kebab-case"
         ],
         "use-input-property-decorator": true,

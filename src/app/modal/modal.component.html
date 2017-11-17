@@ -2,8 +2,8 @@
 <div class="ng-modal-container" (click)="overlayClicked()"
     *ngIf="isOpen" [@appear]="'in'">
     <div class="modal-locator">
-        <div class="main-container" (click)="stopBubble($event)"
-            [ngStyle]="boxStyle">
+        <div class="main-container" [ngStyle]="boxStyle"
+            (click)="stopBubble($event)">
             <div class="modal-inner">
                 <ng-content></ng-content>
             </div>

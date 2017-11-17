@@ -34,18 +34,9 @@ import {
 })
 export class NgModalComponent implements OnInit {
     @Input()
-    public set isOpen(open: boolean) {
-        if (this._isOpen === open) {
-            return;
-        }
-        this._isOpen = open;
-    }
-    public get isOpen() {
-        return this._isOpen;
-    }
+    public isOpen = false;
     @Output()
     public isOpenChange = new EventEmitter<boolean>();
-    private _isOpen = false;
 
     @Input()
     public overlayClosable = true;

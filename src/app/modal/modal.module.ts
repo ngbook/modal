@@ -6,8 +6,9 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { NgButtonModule } from 'ngbook-kits';
 import { PortalModule } from '@angular/cdk/portal';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {
+    BrowserAnimationsModule
+} from '@angular/platform-browser/animations';
 
 import { NgModalComponent } from './modal.component';
 

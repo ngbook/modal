@@ -18,7 +18,7 @@ export class DialogData<T> {
 
     public open() {
         // console.log('open...');
-        this.host.attach(this.portal);
+        this.compRef = this.host.attachComponentPortal(this.portal);
     }
     public close() {
         // console.log('close...');
@@ -61,5 +61,16 @@ export abstract class DialogModelBase {
             'height.px': this.height,
             'min-width.px': this.minWidth,
         };
+    }
+
+    updateOpts(opts) {
+        if (opts) {
+            // 只允许validFields里定义的一些key
+            this.validFields.forEach((key) => {
+                if (opts[key]) {
+                    this[key] = opts[key];
+                }
+            });
+        }
     }
 }

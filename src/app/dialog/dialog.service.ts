@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
 import { NgAlertComponent, AlertData } from './alert/alert.component';
 import { NgConfirmComponent, ConfirmData } from './confirm/confirm.component';
 import { NgPromptComponent, PromptData } from './prompt/prompt.component';
-import { DialogData } from './dialog.model';
+import { DialogData, DialogModelBase } from './dialog.model';
 
 @Injectable()
 export class DialogService {
@@ -30,22 +30,20 @@ export class DialogService {
     }
 
     alert(content: string, title = '提示', opts?: any) {
+        // 生成数据模型的实例，并传入相关的数据
         const data = new AlertData();
         data.title = title;
         data.content = content;
-        if (opts) {
-            // 只允许validFields里定义的一些key
-            data.validFields.forEach((key) => {
-                if (opts[key]) {
-                    data[key] = opts[key];
-                }
-            });
-        }
+        data.updateOpts(opts);
+        // 把 Injector 再包装一层，带入上面的数据模型
         const injector = this.resolveInputs([{
             provide: AlertData, useValue: data
         }]);
+        // 生成 portal 和 host 两个主角
         const portal = new ComponentPortal(NgAlertComponent);
         const host = this.genHost(injector);
+        // 生成一个 DialogData 对象，并把它返回
+        // DialogData 对象用于控制这个弹框
         const dialog = new DialogData<NgAlertComponent>(portal, host, data);
         setTimeout(() => {
             dialog.open();
@@ -57,14 +55,7 @@ export class DialogService {
     confirm(content: string, opts?: any) {
         const data = new ConfirmData();
         data.content = content;
-        if (opts) {
-            // 只允许validFields里定义的一些key
-            data.validFields.forEach((key) => {
-                if (opts[key]) {
-                    data[key] = opts[key];
-                }
-            });
-        }
+        data.updateOpts(opts);
         const injector = this.resolveInputs([{
             provide: ConfirmData, useValue: data
         }]);
@@ -81,14 +72,7 @@ export class DialogService {
     prompt(content: string, opts?: any) {
         const data = new PromptData();
         data.content = content;
-        if (opts) {
-            // 只允许validFields里定义的一些key
-            data.validFields.forEach((key) => {
-                if (opts[key]) {
-                    data[key] = opts[key];
-                }
-            });
-        }
+        data.updateOpts(opts);
         const injector = this.resolveInputs([{
             provide: PromptData, useValue: data
         }]);

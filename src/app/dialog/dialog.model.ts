@@ -1,9 +1,8 @@
-import { ComponentRef, EventEmitter, Component } from '@angular/core';
+import { ComponentRef, EventEmitter } from '@angular/core';
 import {
     DomPortalHost,
     ComponentPortal,
 } from '@angular/cdk/portal';
-import { Observable } from 'rxjs/Observable';
 
 /**
  * 用于记录一个dialog的信息

@@ -26,12 +26,8 @@ export class AppComponent implements OnInit {
         const dialog = this.dialogService.alert('这是一个简单的提示框');
         dialog.setProperty('width', 500);
         dialog.onSure.subscribe((event) => {
-            // console.log(event);
+            console.log(event);
         });
-        // 测试3秒后隐藏
-        // setTimeout(() => {
-        //     dialog.close();
-        // }, 3000);
     }
     showConfirm() {
         const dialog = this.dialogService.confirm(
@@ -39,9 +35,7 @@ export class AppComponent implements OnInit {
                 closeTxt: '并没有',
                 sureTxt: '当然了'
             });
-        // dialog.setProperty('width', 500);
         dialog.onSure.subscribe((event) => {
-            // console.log(event);
             this.dialogService.alert('这不可能');
         });
     }

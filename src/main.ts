@@ -8,7 +8,9 @@ import { environment } from './environments/environment';
 if (environment.production) {
     enableProdMode();
 }
-const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
+const bootstrap = function() {
+    return platformBrowserDynamic().bootstrapModule(AppModule);
+}
 
 if (environment.hmr) {
     if (module['hot']) {
